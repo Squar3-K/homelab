@@ -52,10 +52,10 @@ Physical Server (Ubuntu 24.04)     Oracle Cloud (Free Tier)
 ## Security
 
 - SSH key authentication only
-- UFW firewall (ports 22, 80, 443 only)
-- Fail2ban (auto-bans brute force attempts)
-- Cloudflare Tunnel (no open ports on router)
-- SSL/TLS on all services via Cloudflare
+- UFW firewall 
+- Fail2ban 
+- Cloudflare Tunnel
+- SSL/TLS via Cloudflare
 
 ## Services
 
