@@ -11,7 +11,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# ── MODELS ─────────────────────────────────────────
+# Models
 class Item(BaseModel):
     name: str
     description: Optional[str] = None
@@ -21,11 +21,11 @@ class User(BaseModel):
     username: str
     email: str
 
-# ── IN-MEMORY STORAGE (replace with postgres later) ─
+# in-memory storage (replace with postgres later) 
 items_db = {}
 users_db = {}
 
-# ── MONITORING MIDDLEWARE ───────────────────────────
+# monitoring
 @app.middleware("http")
 async def monitoring_middleware(request, call_next):
     start = time.time()
@@ -53,9 +53,9 @@ async def log_request(data: dict):
                 timeout=0.5
             )
     except:
-        pass  # Never let monitoring break the API
+        pass
 
-# ── HEALTH CHECK ────────────────────────────────────
+# Health
 @app.get("/")
 async def root():
     return {"status": "running", "service": "Homelab API"}
@@ -64,7 +64,7 @@ async def root():
 async def health():
     return {"status": "healthy", "timestamp": time.time()}
 
-# ── ITEMS ENDPOINTS ─────────────────────────────────
+# Items Endpoints
 @app.get("/items")
 async def get_items():
     return {"items": list(items_db.values())}
@@ -72,7 +72,7 @@ async def get_items():
 @app.get("/items/{item_id}")
 async def get_item(item_id: int):
     if item_id not in items_db:
-        raise HTTPException(status_code=404, detail="Item not found")
+        raise HTTPException(status_code=404, detail="Item non existent")
     return items_db[item_id]
 
 @app.post("/items/{item_id}")
@@ -87,7 +87,7 @@ async def delete_item(item_id: int):
     del items_db[item_id]
     return {"message": "Item deleted"}
 
-# ── USERS ENDPOINTS ─────────────────────────────────
+# Users Endpoints
 @app.get("/users")
 async def get_users():
     return {"users": list(users_db.values())}
@@ -100,5 +100,5 @@ async def create_user(user: User):
 @app.get("/users/{username}")
 async def get_user(username: str):
     if username not in users_db:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="User non existent")
     return users_db[username]
