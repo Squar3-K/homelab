@@ -17,7 +17,7 @@ volumes:
 
 services:
 
-  # ── REVERSE PROXY ──────────────────────────────────
+  # Reverse Proxy
   nginx-proxy-manager:
     image: jc21/nginx-proxy-manager:latest
     restart: unless-stopped
@@ -31,7 +31,7 @@ services:
       - npm_data:/data
       - npm_letsencrypt:/etc/letsencrypt
 
-  # ── SHARED INFRA ───────────────────────────────────
+  # Shared infra
   postgres:
     image: postgres:16-alpine
     restart: unless-stopped
@@ -51,7 +51,7 @@ services:
       - backend
     command: redis-server --requirepass ${REDIS_PASSWORD}
 
-  # ── HOME CLOUD ─────────────────────────────────────
+  # Home Cloud (file)
   nextcloud:
     image: nextcloud:28-apache
     restart: unless-stopped
@@ -90,7 +90,7 @@ services:
     volumes:
       - vaultwarden_data:/data
 
-  # ── ML MONITORING ──────────────────────────────────
+  # ML Monitoring
   ml-detector:
     build: ./monitoring/ml_detector
     restart: unless-stopped
@@ -171,6 +171,7 @@ services:
     networks:
       - backend
 
+  # Security
   promtail:
     image: grafana/promtail:latest
     container_name: promtail
@@ -181,6 +182,8 @@ services:
       - ./promtail-config.yml:/etc/promtail/config.yml
     networks:
       - backend
+      
+  # API
   myapi:
     build: ./myapi
     restart: unless-stopped
