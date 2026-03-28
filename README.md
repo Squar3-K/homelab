@@ -3,7 +3,7 @@
 A self-hosted cloud infrastructure running on bare metal + Oracle Cloud,
 featuring real-time ML anomaly detection for APIs.
 
-## 🏗️ Architecture
+##  Architecture
 ```
 Physical Server (Ubuntu 24.04)     Oracle Cloud (Free Tier)
 ├── Nextcloud (File Storage)        ├── Backup Storage
@@ -14,14 +14,14 @@ Physical Server (Ubuntu 24.04)     Oracle Cloud (Free Tier)
 └── Cloudflare Tunnel (HTTPS)
 ```
 
-## 🤖 ML Anomaly Detection
+##  ML Anomaly Detection
 
 - Algorithm: Isolation Forest (unsupervised learning)
 - Detects: unusual error rates, response time spikes, traffic anomalies
 - Training: continuous rolling window (last 1000 requests)
 - Features: response time, status code, payload size, hour of day
 
-## 🛠️ Tech Stack
+## Stack
 
 | Layer | Technology |
 |---|---|
@@ -41,7 +41,7 @@ Physical Server (Ubuntu 24.04)     Oracle Cloud (Free Tier)
 | Security | UFW + Fail2ban + SSL |
 | Cloud | Oracle Cloud Infrastructure |
 
-## 📊 Live Demo
+## Live Demo
 
 | Service | URL |
 |---|---|
@@ -49,7 +49,7 @@ Physical Server (Ubuntu 24.04)     Oracle Cloud (Free Tier)
 | API | https://api.cloudalex.me/docs |
 | Monitoring | https://monitor.cloudalex.me |
 
-## 🔒 Security
+## Security
 
 - SSH key authentication only
 - UFW firewall (ports 22, 80, 443 only)
@@ -57,7 +57,7 @@ Physical Server (Ubuntu 24.04)     Oracle Cloud (Free Tier)
 - Cloudflare Tunnel (no open ports on router)
 - SSL/TLS on all services via Cloudflare
 
-## 🚀 Services
+## Services
 
 ### Nextcloud
 Self-hosted Google Drive alternative with mobile sync,
@@ -80,7 +80,7 @@ Real-time anomaly detection system that:
 - Loki aggregates logs from all containers
 - Grafana dashboards show request rates, anomalies, latency
 
-## 📁 Project Structure
+## Project Structure
 
 \`\`\`
 homelab/
@@ -99,7 +99,7 @@ homelab/
     └── requirements.txt
 \`\`\`
 
-## 🎓 Skills Demonstrated
+## Skills Demonstrated
 
 - Linux system administration
 - Docker & container orchestration
