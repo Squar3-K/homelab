@@ -16,9 +16,9 @@ Physical Server (Ubuntu 24.04)     Oracle Cloud (Free Tier)
 
 ##  ML Anomaly Detection
 
-- Algorithm: Isolation Forest (unsupervised learning)
+- Algorithm: Isolation Forest
 - Detects: unusual error rates, response time spikes, traffic anomalies
-- Training: continuous rolling window (last 1000 requests)
+- Training: continuous rolling window
 - Features: response time, status code, payload size, hour of day
 
 ## Stack
