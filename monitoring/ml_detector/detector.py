@@ -11,7 +11,6 @@ import os
 
 app = FastAPI()
 
-# Redis connection
 try:
     r = redis.Redis(
         host='redis',
