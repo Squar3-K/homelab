@@ -81,7 +81,7 @@ async def log_request(request: Request):
         features = extract_features(body)
         training_data.append(features)
 
-        # Train after 100 samples
+        # Train after 100spls
         if len(training_data) >= 100 and len(training_data) % 10 == 0:
             model.fit(training_data[-1000:])
             is_trained = True
@@ -107,7 +107,7 @@ async def log_request(request: Request):
         if is_anomaly:
             endpoint_stats[ep]['anomalies'] += 1
 
-        # Prometheus metrics
+        # metrics
         REQUEST_COUNT.labels(
             endpoint=ep,
             status=str(body.get('status_code', 200))
@@ -116,7 +116,7 @@ async def log_request(request: Request):
             float(body.get('response_time', 0))
         )
 
-        # Store in Redis safely
+        # Store
         if r:
             log_entry = {
                 'endpoint': ep,
